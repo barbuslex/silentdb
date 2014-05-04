@@ -19,7 +19,8 @@ Route::resource('user', 'UserController');
 Route::resource('group', 'GroupController');
 
 Route::group(array('prefix' => 'admin'), function() {
-	
+	Route::get('/', 'AdminPageController@getIndex');
+	Route::resource('groups', 'GroupController');
 });
 
 Route::get('/', 'HomeController@showWelcome');

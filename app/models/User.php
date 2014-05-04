@@ -80,15 +80,15 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->email;
 	}
 
-
-
-	public $group_id = 1;
-
 	/**
 	 * User -> Group
 	 */
 	public function group() {
 		return $this->belongsTo('Group');
+	}
+
+	public function deployments() {
+		return $this->hasMany('Deployment');
 	}
 
 	public function is_admin() {

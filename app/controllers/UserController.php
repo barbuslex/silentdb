@@ -3,6 +3,7 @@
 class UserController extends \BaseController {
 
 	public function __construct() {
+		$this->beforeFilter('auth', array('except' => array('getLogin', 'postLogin')));
 		$this->beforeFilter('csrf', array('on' => array('post', 'put', 'patch', 'delete')));
 	}
 

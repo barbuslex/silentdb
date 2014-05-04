@@ -78,3 +78,9 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+Route::filter('admin', function()
+{
+	if (!Auth::check() || Auth::user()->group_id <> SILENTDB_ADMIN) 
+		return App::abort(404);
+});
